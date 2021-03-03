@@ -1,0 +1,73 @@
+<center>
+<hr>
+<%= "EDIT WORK ORDER # #{@work_order.id}" %>
+<hr>
+<%= "[#{@work_order.tenant.apartment.number}]" %>
+<br>
+<%= "#{@work_order.tenant.apartment.building.number}" %>
+<%= "#{@work_order.tenant.apartment.building.street_address}" %>
+<hr>
+</center>
+
+<%=form_with(model: @work_order, url: apartment_work_order_path(@work_order), method: "patch") do |f| %>
+
+   
+<div id="error_explanation">
+    <% if @work_order.errors.any? %>
+
+        <ul>
+            <% @work_order.errors.full_messages.each do |m| %>
+                <li>
+                <%= m %>
+                </li>
+            <% end %>
+        </ul>
+        
+    <% end %>
+</div>
+ 
+
+
+
+
+
+    <div>
+    <%= f.label :tenant %>
+    <%# DISPLAY ONLY THE TENANTS THAT LIVE INSIDE THAT SPECIFIC APARTMENT %>
+    <%= f.collection_select :tenant_name, Tenant.where(:apartment_id => @work_order.tenant.apartment.id), :name, :name %>
+    </div>
+
+    <div>
+    <%= f.label :status %>
+    <%= f.collection_select(:status, WorkOrder::STATUS_OPTIONS, :to_s, :to_s) %>
+    </div>
+
+    <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    </div>
+
+    <div>
+    <%= f.label :solution %>
+    <%= f.text_area :solution %>
+    </div>
+
+    <div>
+    <%= f.label :solve_date %>
+    <%= f.text_field :solve_date %>
+    </div>
+
+    <div>
+    <%= f.label :worker %>
+    <%= f.text_field :worker %>
+    </div>
+
+  <hr>
+    <%= f.submit %>
+  <hr>
+<% end %>
+
+<center>
+<%= button_to "Delete Work Order", apartment_work_order_path(@work_order.tenant.apartment_id, @work_order.id), method: :delete %>
+</center>
+<hr>

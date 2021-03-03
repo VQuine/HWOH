@@ -1,0 +1,16 @@
+<hr>WORK ORDERS INDEX<hr>
+
+<% @work_orders.each do |wo| %>
+    <%= "WORK ORDER # #{wo.id}" %>
+    <% wo.attributes.each do | a, av | %>
+        <li><%= a + ": " + av.to_s unless av == nil %></li>
+    <%end%>
+
+    <%if current_staff_member.id == wo.staff_member.id%>
+     <%= link_to "EDIT WORK ORDER ##{wo.id}", edit_apartment_work_order_path(wo.tenant.apartment.id, wo.id)%>
+    <%end%>
+    
+    <center> GO TO : <%= link_to "Apartment", apartment_path(wo.tenant.apartment) %> </center>
+    
+    <hr>
+<% end %>

@@ -1,0 +1,37 @@
+<hr>
+<center>Log In Here!</center>
+<hr>
+
+
+<%= button_to "Log in with Google", '/auth/google_oauth2' %>
+<%# REQUEST WILL TRIGGER OMNIAUTH MIDDLEWARE & SEND REQUEST TO GOOGLE %>
+
+        =====OR=====
+
+
+
+<%# ======================================================= %>
+<%# ======================================================= %>
+<%# ======================================================= %>
+                                    <%# T R Y   A G A I N  %>
+<%if flash[:error] %>
+    <h2><%= flash[:error] %></h2>
+<% end %>    
+
+<%# ======================================================= %>
+                                    <%# LOG IN FORM %>
+<%=form_tag("/login") do%>
+
+
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
+
+
+
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+
+
+    <%= submit_tag "Log In!" %>
+
+<% end %><%#<---FORMend%>

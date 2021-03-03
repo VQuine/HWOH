@@ -1,0 +1,58 @@
+<center><hr> STAFF MEMBER PROFILE <hr> EDIT <hr></center>
+
+<%= form_for(@staff_member) do |f| %>
+<div id="error_explanation">
+    <% if @staff_member.errors.any? %>
+
+        <ul>
+            <% @staff_member.errors.full_messages.each do |m| %>
+                <li>
+                <%= m %>
+                </li>
+            <% end %>
+        </ul>
+        
+    <% end %>
+</div>
+
+<div>
+<%= f.label :first_name %>
+<%= f.text_field :first_name, :placeholder => "Jane" %>
+
+<%= f.label :last_name %>
+<%= f.text_field :last_name, placeholder: "Doe" %>
+<div>
+
+
+<%= f.label :email %>
+<%= f.email_field :email, :placeholder => "abc@123.edu" %>
+
+<%# ===================================================== %>
+<div>
+    
+
+    <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    </div><br>
+
+    
+</div>
+
+
+<%# ===================================================== %>
+<hr>
+    <%= f.label :position %>
+    <%= f.text_field :position, placeholder: "---" %>   
+<hr>
+<div>
+    <%= f.submit %>
+</div>
+    <hr>
+    
+    
+<% end %>
+    

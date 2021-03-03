@@ -1,0 +1,25 @@
+<% @work_orders.each do |wo| %>
+
+<%= link_to "Work Order # : #{wo.id}", apartment_work_order_path(wo.tenant.apartment.id, wo.id) %>
+<br>
+
+    FILER: <%= wo.tenant.name %>
+   <ul> 
+    <li>STATUS:<%= wo.status %></li>
+    <li>CONTENT:<%= wo.content %></li>
+    <li>SOLUTION:<%= wo.solution %></li>
+    <li>SOLVE DATE:<%= wo.solve_date %></li>
+    <li>WORKER:<%= wo.worker %></li>
+   </ul>
+
+
+    <%if current_staff_member.id == wo.staff_member.id%>
+        
+             <%= link_to "EDIT Work Order ##{wo.id}", edit_apartment_work_order_path(wo.tenant.apartment_id, wo.id)%>
+        
+    <%end%>
+    
+    | REGISTRAR : <%= wo.staff_member.first_name + " " + wo.staff_member.last_name %> |
+    
+    <hr>
+<% end %>

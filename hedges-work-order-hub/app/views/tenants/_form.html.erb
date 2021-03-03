@@ -1,0 +1,31 @@
+<%= form_for(@tenant) do |f| %>
+
+<div id="error_explanation">
+    <% if @tenant.errors.any? %>
+
+        <ul>
+            <% @tenant.errors.full_messages.each do |m| %>
+                <li>
+                <%= m %>
+                </li>
+            <% end %>
+        </ul>
+        
+    <% end %>
+</div>
+
+     
+    <%= f.collection_select :apartment_id, Apartment.order(:long_address), :id, :long_address, {:prompt => "Please, select an apartment"}, {:required => true} %>
+    <br>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <br>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <br>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+    <br>
+    <%= f.submit %>
+<% end %>

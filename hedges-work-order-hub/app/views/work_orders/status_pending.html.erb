@@ -1,0 +1,22 @@
+<center>
+<hr>
+WORK ORDERS
+<br>
+    <% if @work_orders %>
+        <%= "(#{@work_orders.count})" %>
+    <% else %>
+        (0)
+    <% end %>
+<br>
+STATUS PENDING - NEED ACTION!
+<hr>
+</center>
+
+<% if @work_orders %>
+    <center>
+    <%=render partial: 'work_orders'%>
+    </center>
+<% else %>
+    <center><%= link_to "Create a new Work Order", new_work_order_path %></center>
+<% end %>
+

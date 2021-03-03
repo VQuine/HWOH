@@ -1,0 +1,14 @@
+<hr>
+<center><h1>STAFF MEMBERS INDEX PAGE</h1></center>
+<hr>
+
+
+
+<ul>
+<% @staff_members.each do |staff_m| %>
+    <li>
+    <%= link_to "#{staff_m.first_name.capitalize} #{staff_m.last_name.capitalize}", staff_m %>
+    <%= staff_m.position %>
+    </li>
+<% end %>
+</ul>

@@ -1,0 +1,23 @@
+<hr>
+<center>STAFF MEMBER PROFILE</center>
+<hr>
+
+<br>
+<%= @staff_member.first_name %>
+<%= @staff_member.last_name %><br>
+<%= @staff_member.email %><br>
+<%= @staff_member.position %><br>
+<hr>
+
+<%# =================================== %>
+<center>
+Go To : <%= link_to "Work Order Hub", '/hub' %>
+</center>
+<hr>
+<%# =================================== %>
+<%= link_to "Edit Staff Member Details", edit_staff_member_path %>
+<hr>
+<%# =================================== %>
+<%= link_to("Log out!", '/logout', method: :delete) %>
+<%# =================================== %>
+

@@ -1,0 +1,12 @@
+<%# ITERATE THROUGH @'D TENANT.ALL %>
+<% @tenants.each do |tenant| %>
+<hr>
+    FIRST NAME : <%= tenant.first_name %><br>
+    LAST NAME : <%= tenant.last_name %><br>
+    REGISTRAR : <%= tenant.staff_member.id.to_s + " - " + tenant.staff_member.first_name + " " + tenant.staff_member.last_name %><br>
+    BUILDING : <%= tenant.apartment.building.number + " " + tenant.apartment.building.street_address %><br>
+    APARTMENT : <%= tenant.apartment.number %><br>
+
+    <%= link_to "View #{tenant.first_name}'s Tenant Profile", tenant_path(tenant) %>
+<hr>
+<% end %>

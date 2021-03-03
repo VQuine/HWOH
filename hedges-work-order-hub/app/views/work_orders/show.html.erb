@@ -1,0 +1,24 @@
+<hr><center>
+<%= "WORK ORDER # #{@work_order.id}" %>
+</center><hr>
+
+<%@work_order.attributes.each do | a, av |%>
+    <li><%= a + ": " + av.to_s %></li>
+<%end%>
+TENANT:<%=@work_order.tenant.name%>
+
+<hr>
+<% if current_staff_member.id == @work_order.staff_member.id %>
+    <%= link_to "Edit This Work Order's Details", edit_apartment_work_order_path(@work_order.tenant.apartment_id, @work_order.id) %>
+<% end %>
+
+<hr>
+<%= button_to "Delete Work Order", apartment_work_order_path(@work_order.tenant.apartment_id, @work_order.id), method: :delete %>
+<hr>
+
+<center> GO TO : <%= link_to "Work Order Index", work_orders_path %> </center>
+
+<hr>
+
+<center> GO TO : <%= link_to "Apartment", apartment_path(@work_order.tenant.apartment) %> </center>
+

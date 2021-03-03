@@ -1,0 +1,69 @@
+<hr><center>Sign Up Here!!!<hr>Create A New Staff Member</center><hr>
+
+<%# <form action="/staff_members" method="POST"> %>
+<%# CREATE FORM THAT ON SUBMISSION %>
+<%# SENDS A POST REQUEST TO THE SERVER %>
+<%# TO THE DATABASE TO CREATE AN INSTANCE OF THE STAFFMEMBER MODEL %>
+
+
+
+    <%= form_for(@staff_member) do |f| %>
+<div id="error_explanation">
+    <% if @staff_member.errors.any? %>
+
+        <ul>
+            <% @staff_member.errors.full_messages.each do |m| %>
+                <li>
+                <%= m %>
+                </li>
+            <% end %>
+        </ul>
+        
+    <% end %>
+</div>
+
+<div>
+<%= f.label :first_name %>
+<%= f.text_field :first_name, :placeholder => "Jane" %>
+
+<%= f.label :last_name %>
+<%= f.text_field :last_name, placeholder: "Doe" %>
+<div>
+
+
+<%= f.label :email %>
+<%= f.email_field :email, :placeholder => "abc@123.edu" %>
+
+<%# ===================================================== %>
+<div>
+    
+
+    <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    </div><br>
+
+    
+</div>
+
+
+<%# ===================================================== %>
+<div>
+    <%= f.submit %>
+</div>
+    <hr>
+    <%= f.label :position %>
+    <%= f.text_field :position, placeholder: "---" %>   
+    <hr>
+    
+    
+<% end %> 
+    
+
+    <%= button_to "SIGN UP with GOOGLE CREDENTIALS", '/auth/google_oauth2' %>
+    
+   
+    

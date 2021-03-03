@@ -1,0 +1,62 @@
+<hr>
+<center>Create a New Work Order Here!</center>
+<hr>
+
+
+<%= form_for @work_order do |f| %>
+
+<div id="error_explanation">
+    <% if @work_order.errors.any? %>
+
+        <ul>
+            <% @work_order.errors.full_messages.each do |m| %>
+                <li>
+                <%= m %>
+                </li>
+            <% end %>
+        </ul>
+        
+    <% end %>
+</div>
+
+  
+<div><%# (METHOD, COLLECTION, VALUE_METHOD, TEXT_METHOD, OPTIONS = { }, HTML_OPTIONS = { }) %>  
+  Tenant:
+    <% if @apt_toggle != "" %>
+      <%= f.collection_select :tenant_id, Tenant.where(:apartment_id => @apt_toggle), :id, :full_display, {:prompt => "Please, select a tenant"}, {:required => true} %>
+    <% else %>
+     <%= f.collection_select :tenant_id, Tenant.order(:full_display), :id, :full_display, {:prompt => "Please, select a tenant"}, {:required => true} %>
+    <% end %>
+  <hr>
+</div> 
+
+    <div>
+    <%= f.label :status %>
+     <%= f.collection_select(:status, WorkOrder::STATUS_OPTIONS, :to_s, :to_s, {:prompt => "-"}, {:required => true}) %>
+    </div>
+
+    <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    </div>
+
+    <div>
+    <%= f.label :solution %>
+    <%= f.text_area :solution %>
+    </div>
+
+    <div>
+    <%= f.label :solve_date %>
+    <%= f.text_field :solve_date %>
+    </div>
+
+    <div>
+    <%= f.label :worker %>
+    <%= f.text_field :worker %>
+    </div>
+
+<hr>
+  <%= f.submit %>
+<hr>
+<% end %>
+

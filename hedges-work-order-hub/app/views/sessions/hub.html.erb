@@ -1,0 +1,19 @@
+<center>
+<hr>
+    <h2>
+        WORK ORDER H U B
+    </h2>
+<hr>
+
+    <%= link_to "create a new Work Order", new_work_order_path %>
+<hr>
+    <%= link_to "register a Tenant", new_tenant_path %>
+<hr>
+    <%= link_to "look at Apartment Index", apartments_path %>
+<hr>
+    <%= link_to "STATUS - PENDING Work Orders", '/work_orders/status_pending' %>
+<hr>
+</center>
+
+    <%= render partial: '/work_orders/work_orders' %>
+    

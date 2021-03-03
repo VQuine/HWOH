@@ -1,0 +1,12 @@
+<center>
+<hr>
+APARTMENTS INDEX
+<hr>
+</center>
+
+<%@apartments.each do |apt|%>
+<%= link_to "#{apt.long_address}", apartment_path(apt) %>
+|
+<%= link_to "New Work Order", new_apartment_work_order_path(apt) %><br>
+<hr>
+<%end%>

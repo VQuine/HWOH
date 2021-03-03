@@ -1,0 +1,19 @@
+<hr>
+    STEP 2 IN THE SIGN UP PROCESS!<br>
+    WHEN USING 3RD PARTY AUTHENTICATION<br>
+    <h2>PLEASE, CONTINUE THIS SIGNUP PROCESS</h2>
+<hr>
+<%= form_for @staff_member do |f| %>
+
+   <%= f.label :first_name %>:<br>  <%= @staff_member.first_name %><br>
+   <%= f.label :last_name %>:<br>  <%= @staff_member.last_name %><br>
+   <%= f.label :email %>:<br>   <%= @staff_member.email %><br>
+<br>
+
+
+    <%= f.label :position %>
+    <%= f.text_field :position, required: true%>
+<div>
+    <%= f.submit "update this object for more data attribute values" %>
+</div>
+<% end %>

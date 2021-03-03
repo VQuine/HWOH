@@ -1,0 +1,10 @@
+<center>
+<hr>
+TENANT INFORMATION
+<hr>
+    <%= @tenant.first_name %> <%= @tenant.last_name %><br>
+    [<%= @tenant.apartment.number %>]<br>
+    <%= @tenant.apartment.building.number + " " + @tenant.apartment.building.street_address %><br>
+    <%= link_to "View Apartment", apartment_path(@tenant.apartment) %>
+<hr>
+</center>

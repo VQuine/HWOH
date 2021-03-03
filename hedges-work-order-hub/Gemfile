@@ -3,6 +3,20 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+# ==============================================================*+
+gem 'dotenv-rails'
+#TO KEEP CREDENTIALS HIDDEN - ID'S & SECRETS - 
+# create '.env' file, add '.env' to '.gitignore' file - 
+# .env will not get pushed to github
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+# FIXES CSRF VULNERABILITIES THAT ARE IN OMNIAUTH GEM
+# ****MUST NOW SEND 'POST' REQUEST WHEN LOGGING IN WITH GOOGLE
+# ****USE 'BUTTON_TO' FOR 'LOG IN WITH GOOGLE' IN VIEWS
+# ==============================================================*+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
 # Use sqlite3 as the database for Active Record
@@ -20,7 +34,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
