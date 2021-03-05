@@ -1,0 +1,30 @@
+
+<%= link_to "Work Order # : #{@work_order.id}", apartment_work_order_path(@work_order.tenant.apartment.id, @work_order.id) %>
+<br>
+
+    FILER: <%= @work_order.tenant.name %>
+<ul> 
+    <%= "• STATUS : #{@work_order.status}" %><br>
+    <%= "• CONTENT : #{@work_order.content}" %><br>
+
+    <%= "► SOLVE DATE : #{@work_order.solve_date}" unless @work_order.solve_date == nil || @work_order.solve_date == "" %>
+    <%= "► SOLUTION : #{@work_order.solution}" unless @work_order.solution == nil || @work_order.solution == "" %>    
+    <%= "► WORKER : #{@work_order.worker}" unless @work_order.worker == nil || @work_order.worker == "" %><br>
+</ul>
+
+        <%= link_to @work_order.tenant.apartment.short_address, apartment_path(@work_order.tenant.apartment.id) %>
+        
+        |
+
+        <%if current_staff_member.id == @work_order.staff_member.id %>
+            
+                <%= link_to "EDIT Work Order ##{@work_order.id}", edit_apartment_work_order_path(@work_order.tenant.apartment_id, @work_order.id) %>
+            
+        <%end%>
+
+      | REGISTRAR : 
+      <%= link_to @work_order.staff_member.first_name + " " + @work_order.staff_member.last_name, staff_member_path(@work_order.staff_member) %> 
+      |
+      
+    
+<hr>

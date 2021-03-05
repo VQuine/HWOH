@@ -2,10 +2,12 @@
 <%= "WORK ORDER # #{@work_order.id}" %>
 </center><hr>
 
-<%@work_order.attributes.each do | a, av |%>
-    <li><%= a + ": " + av.to_s %></li>
-<%end%>
-TENANT:<%=@work_order.tenant.name%>
+
+
+        <%= render partial: 'work_order' %>
+
+
+
 
 <hr>
 <% if current_staff_member.id == @work_order.staff_member.id %>
