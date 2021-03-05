@@ -30,6 +30,12 @@ class TenantsController < ApplicationController
 
   def update
     @tenant = Tenant.find_by_id(params[:id])
+    @tenant.update(tenant_params)
+    if @tenant.save
+      redirect_to tenant_path(@tenant)
+    else
+      render :edit
+    end
   end
 
     private

@@ -1,3 +1,11 @@
+<% if flash[:message] %>
+    <%= flash[:message] %>
+<% end %>
+
+<% if flash[:error] %>
+    <%= flash[:error] %>
+<% end %>
+
 <hr>
 <center>STAFF MEMBER PROFILE</center>
 <hr>
@@ -15,7 +23,9 @@ Go To : <%= link_to "Work Order Hub", '/hub' %>
 </center>
 <hr>
 <%# =================================== %>
-<%= link_to "Edit Staff Member Details", edit_staff_member_path %>
+<% if current_staff_member.id == @staff_member.id %>
+    <%= link_to "Edit Staff Member Details", edit_staff_member_path %>
+<% end %>
 <hr>
 <%# =================================== %>
 <%= link_to("Log out!", '/logout', method: :delete) %>

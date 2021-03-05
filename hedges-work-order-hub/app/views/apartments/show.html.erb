@@ -1,17 +1,22 @@
 <center>
 <hr>
-APARTMENT
+    APARTMENT
 <br>
     <%= render 'apartment' %>
 <hr>
 
 <%= @tenants.count %> TENANT(S)
 <br>
-<%= link_to "Register New Tenant", new_tenant_path %>
-    <br>
     <% @tenants.each do |t| %>
-        <%= t.name %><br>
+        
+        ▬<%= link_to t.name, tenant_path(t) %>▬
+        <br>
     <% end %>
+
+<%= link_to "Register New Tenant", new_tenant_path %>
+
+
+
     <hr>
 
 <%= @work_orders.count %> WORK ORDER(S) ON RECORD

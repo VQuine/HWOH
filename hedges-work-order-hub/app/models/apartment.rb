@@ -1,4 +1,5 @@
 class Apartment < ApplicationRecord
+validates :number, presence: true
     belongs_to :building
 
     before_validation :short_addressify

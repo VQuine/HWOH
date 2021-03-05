@@ -1,0 +1,11 @@
+<hr>
+<center>
+BUILDINGS INDEX
+</center>
+<hr>
+
+<ul>
+    <% @buildings. each do |b| %>    
+    <li><%= link_to "#{b.number} #{b.street_address}", building_path(b) %></li>
+    <% end %>
+</ul>

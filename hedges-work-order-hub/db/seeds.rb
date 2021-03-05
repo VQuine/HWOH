@@ -15,7 +15,7 @@ b_list = [
     ["401A", "Brentwood Road", 2]
 ]
 b_list.each do |n, sa, smid|
-     Building.create(:number => n, :street_address => sa, :staff_member_id => smid)
+    Building.create(:number => n, :street_address => sa, :staff_member_id => smid)
 end
 
 #? A P A R T M E N T  S E E D = = ==============================

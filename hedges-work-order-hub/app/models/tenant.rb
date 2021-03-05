@@ -1,5 +1,6 @@
 class Tenant < ApplicationRecord
     validates :first_name, :last_name, :phone, :presence => true
+    validates :phone, numericality: true, length: { is: 10 }
     before_validation :full_displayify
 
     belongs_to :staff_member

@@ -4,22 +4,29 @@
 <br>
 
     FILER: <%= wo.tenant.name %>
-   <ul> 
-    <li>STATUS:<%= wo.status %></li>
-    <li>CONTENT:<%= wo.content %></li>
-    <li>SOLUTION:<%= wo.solution %></li>
-    <li>SOLVE DATE:<%= wo.solve_date %></li>
-    <li>WORKER:<%= wo.worker %></li>
-   </ul>
+<ul> 
+    <%= "• STATUS : #{wo.status}" %><br>
+    <%= "• CONTENT : #{wo.content}" %><br>
 
+    <%= "► SOLVE DATE : #{wo.solve_date}" unless wo.solve_date == nil || wo.solve_date == "" %>
+    <%= "► SOLUTION : #{wo.solution}" unless wo.solution == nil || wo.solution == "" %>    
+    <%= "► WORKER : #{wo.worker}" unless wo.worker == nil || wo.worker == "" %><br>
+</ul>
 
-    <%if current_staff_member.id == wo.staff_member.id%>
+        <%= link_to wo.tenant.apartment.short_address, apartment_path(wo.tenant.apartment.id) %>
         
-             <%= link_to "EDIT Work Order ##{wo.id}", edit_apartment_work_order_path(wo.tenant.apartment_id, wo.id)%>
-        
-    <%end%>
+        |
+
+        <%if current_staff_member.id == wo.staff_member.id %>
+            
+                <%= link_to "EDIT Work Order ##{wo.id}", edit_apartment_work_order_path(wo.tenant.apartment_id, wo.id) %>
+            
+        <%end%>
+
+      | REGISTRAR : 
+      <%= link_to wo.staff_member.first_name + " " + wo.staff_member.last_name, staff_member_path(wo.staff_member) %> 
+      |
+      
     
-    | REGISTRAR : <%= wo.staff_member.first_name + " " + wo.staff_member.last_name %> |
-    
-    <hr>
+<hr>
 <% end %>

@@ -1,25 +1,22 @@
+<div style="text-align:right; color:grey;">
+    The Hedges- W O R K  |  O R D E R  |  H U B 
+</div>
+
 <hr>
 <center>Log In Here!</center>
 <hr>
 
 
-<%= button_to "Log in with Google", '/auth/google_oauth2' %>
-<%# REQUEST WILL TRIGGER OMNIAUTH MIDDLEWARE & SEND REQUEST TO GOOGLE %>
-
-        =====OR=====
-
-
-
-<%# ======================================================= %>
-<%# ======================================================= %>
 <%# ======================================================= %>
                                     <%# T R Y   A G A I N  %>
 <%if flash[:error] %>
+<hr>
     <h2><%= flash[:error] %></h2>
+<hr>
 <% end %>    
-
 <%# ======================================================= %>
                                     <%# LOG IN FORM %>
+<center>
 <%=form_tag("/login") do%>
 
 
@@ -35,3 +32,14 @@
     <%= submit_tag "Log In!" %>
 
 <% end %><%#<---FORMend%>
+</center>
+
+<hr>
+<center>
+OR
+<br>
+LOG IN WITH 3RD PARTY PROVIDER
+<hr>
+<%= button_to "GMAIL", '/auth/google_oauth2' %>
+<%# REQUEST WILL TRIGGER OMNIAUTH MIDDLEWARE & SEND REQUEST TO GOOGLE %>
+</center>

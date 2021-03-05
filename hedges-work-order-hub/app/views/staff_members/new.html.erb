@@ -1,3 +1,7 @@
+<div style="text-align:right;">
+    The Hedges- W O R K  |  O R D E R  |  H U B 
+</div>
+
 <hr><center>Sign Up Here!!!<hr>Create A New Staff Member</center><hr>
 
 <%# <form action="/staff_members" method="POST"> %>
@@ -51,19 +55,24 @@
 
 
 <%# ===================================================== %>
+    <hr>
+    <%= f.label :position %>
+    <%= f.text_field :position, placeholder: "---", :required => true %>   
+    <hr>
+    
+    
 <div>
     <%= f.submit %>
 </div>
-    <hr>
-    <%= f.label :position %>
-    <%= f.text_field :position, placeholder: "---" %>   
-    <hr>
-    
-    
 <% end %> 
     
+<hr><center>
+OR
+<br>
+SIGN UP WITH 3RD PARTY CREDENTIALS
+<br>
 
-    <%= button_to "SIGN UP with GOOGLE CREDENTIALS", '/auth/google_oauth2' %>
-    
+    <%= button_to "GMAIL", '/auth/google_oauth2' %>
+</center><hr>    
    
     

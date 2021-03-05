@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+root 'sessions#woh'
+
+  resources :buildings
   resources :tenants
   resources :staff_members
   #* =================================================L O G  I N=====

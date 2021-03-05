@@ -5,14 +5,14 @@ class StaffMembersController < ApplicationController
     # EXCEPT FOR THE INDEX ACTION
     # skip_before_action :require_login, only: [:index]
     # ============================================================
+
+    def show
+        @staff_member = StaffMember.find(params[:id])
+    end
     
-        def show
-            @staff_member = StaffMember.find(params[:id])
-        end
-    
-        def index
-            @staff_members = StaffMember.all
-        end
+    def index
+         @staff_members = StaffMember.all
+    end
 #SIGN UP A NEW STAFF MEMBER
     def new
         
@@ -45,6 +45,13 @@ class StaffMembersController < ApplicationController
         @staff_member = StaffMember.find_by_id(params[:id])
         @staff_member.update(staff_member_params)
         redirect_to staff_member_path(@staff_member)
+    end
+
+    def destroy
+        @staff_member = StaffMember.find_by_id(params[:id])
+        @staff_member.destroy
+        redirect_to signup_path
+
     end
 
     def step_2

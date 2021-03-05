@@ -7,4 +7,10 @@ TENANT INFORMATION
     <%= @tenant.apartment.building.number + " " + @tenant.apartment.building.street_address %><br>
     <%= link_to "View Apartment", apartment_path(@tenant.apartment) %>
 <hr>
+
+    Telephone:<%=@tenant.phone%>
+
+<hr>
 </center>
+
+<%= link_to "Edit Tenant Details", edit_tenant_path(@tenant) %>
