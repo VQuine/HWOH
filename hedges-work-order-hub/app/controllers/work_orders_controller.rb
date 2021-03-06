@@ -5,6 +5,7 @@ class WorkOrdersController < ApplicationController
         @apt_toggle = ""
         if params[:apartment_id]
             @apt_toggle = params[:apartment_id]
+            @apt = Apartment.find_by(params[:apartment_id])
         end
         render :new
     end
@@ -13,11 +14,15 @@ class WorkOrdersController < ApplicationController
 
         
         @work_order = WorkOrder.new(work_order_params)
-        @work_order.staff_member_id = current_staff_member.id.to_i
+        @work_order.staff_member = current_staff_member
     
         if @work_order.save
             redirect_to apartment_work_order_path(@work_order.tenant.apartment, @work_order)
         else
+            if params[:apartment_id]
+                @apt_toggle = params[:apartment_id]
+                @apt = Apartment.find_by(params[:apartment_id])
+            end
             "work order CREATE failure"
             render :new
         end
@@ -59,11 +64,21 @@ class WorkOrdersController < ApplicationController
 
     def index # FEATURES [[[NESTED ROUTE CONDITIONAL!!!]]]
         #'/APARTMENTS/:APARTMENT_ID/WORK_ORDERS'
+    
         if params[:apartment_id]
             @apartment = Apartment.find_by(:id => params[:apartment_id])
             @work_orders = @apartment.work_orders
+    
+        
+        #'/BUILDINGS/:BUILDING_ID/WORK_ORDERS'
+        elsif params[:building_id]
+            @building = Building.find_by_id(params[:building_id])
+            @apartments = Apartment.find_by_building_id(@building.id)
+            @work_orders = @apartments.work_orders # @work_orders = @building.work_orders <<<<< What I wanted to work :C
+      
         #'/WORK_ORDERS'
         else
+    
             @work_orders = WorkOrder.all
         end        
     end
@@ -76,6 +91,6 @@ class WorkOrdersController < ApplicationController
 
         private
             def work_order_params
-                params.require(:work_order).permit(:content, :status, :solution, :solve_date, :worker, :staff_member_id, :tenant, :apartment_id, :tenant_id)
+                params.require(:work_order).permit(:content, :status, :solution, :solve_date, :worker, :staff_member_id, :tenant, :apartment_id, :tenant_id, :building_id)
             end
 end 

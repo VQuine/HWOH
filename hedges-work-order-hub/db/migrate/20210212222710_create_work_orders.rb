@@ -6,6 +6,7 @@ class CreateWorkOrders < ActiveRecord::Migration[6.1]
         t.string :solution
         t.string :solve_date
         t.string :worker
+        
         # FOREIGN KEY - BELONGS_TO RELATIONSHIP
         t.integer :staff_member_id
         t.integer :tenant_id #this is optional

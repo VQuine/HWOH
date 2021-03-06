@@ -12,7 +12,7 @@ class CreateTenants < ActiveRecord::Migration[6.1]
 
       # FOREIGN KEYS
       t.integer :staff_member_id
-      # t.integer :building_id
+      t.integer :building_id #allows column access for BUILDING.TENANTS, I hope.
       t.integer :apartment_id
 
       t.timestamps

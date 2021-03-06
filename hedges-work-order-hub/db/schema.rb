@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_024144) do
     t.string "name"
     t.string "full_display"
     t.integer "staff_member_id"
+    t.integer "building_id"
     t.integer "apartment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

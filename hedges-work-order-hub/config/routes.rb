@@ -45,8 +45,16 @@ root 'sessions#woh'
     resources :work_orders, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   end
   resources :work_orders, only: [:new, :create]
-  
+
+  # +            +            +            +            +            +
+
+  resources :buildings do
+    resources :work_orders, only: [:index]
+  end
+
+  # =====================================================================
+  #                                       A CTIVE R ECORD S C O P E USAGE  
   get '/work_orders', to: 'work_orders#index'
   get '/work_orders/status_pending', to: 'work_orders#status_pending'
-  # ====================================================
+  # =====================================================================
 end 

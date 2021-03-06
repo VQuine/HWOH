@@ -1,6 +1,13 @@
-<center><hr> STAFF MEMBER PROFILE <hr> EDIT <hr></center>
+<center><hr> STAFF MEMBER PROFILE <hr> EDIT <hr></center> 
 
 <%= form_for(@staff_member) do |f| %>
+
+<% if flash[:error] %>
+<hr>
+    <%= flash[:error] %>
+<hr>
+<% end %>
+
 <div id="error_explanation">
     <% if @staff_member.errors.any? %>
 

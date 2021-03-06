@@ -3,7 +3,7 @@
 <hr>
 
 
-<%= form_for @work_order do |f| %>
+<%= form_for [@apt, @work_order] do |f| %>
 
 <div id="error_explanation">
     <% if @work_order.errors.any? %>
@@ -23,21 +23,21 @@
 <div><%# (METHOD, COLLECTION, VALUE_METHOD, TEXT_METHOD, OPTIONS = { }, HTML_OPTIONS = { }) %>  
   Tenant:
     <% if @apt_toggle != "" %>
-      <%= f.collection_select :tenant_id, Tenant.where(:apartment_id => @apt_toggle), :id, :full_display, {:prompt => "Please, select a tenant"}, {:required => true} %>
+      <%= f.collection_select :tenant_id, Tenant.where(:apartment_id => @apt_toggle), :id, :full_display, {:prompt => "Please, select a tenant"} %>
     <% else %>
-     <%= f.collection_select :tenant_id, Tenant.order(:full_display), :id, :full_display, {:prompt => "Please, select a tenant"}, {:required => true} %>
+     <%= f.collection_select :tenant_id, Tenant.order(:full_display), :id, :full_display, {:prompt => "Please, select a tenant"}%>
     <% end %>
   <hr>
 </div> 
 
     <div>
     <%= f.label :status %>
-     <%= f.collection_select(:status, WorkOrder::STATUS_OPTIONS, :to_s, :to_s, {:prompt => "-"}, {:required => true}) %>
+     <%= f.collection_select(:status, WorkOrder::STATUS_OPTIONS, :to_s, :to_s, {:prompt => "-"} ) %>
     </div>
 
     <div>
     <%= f.label :content %>
-    <%= f.text_area :content, {:required => true} %>
+    <%= f.text_area :content %>
     </div>
 
     <div>

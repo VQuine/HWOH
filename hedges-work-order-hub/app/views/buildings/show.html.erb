@@ -1,14 +1,22 @@
 <center>
 <hr>
-    BUILDING INFORMATION
+    <h3>BUILDING INFORMATION</h3>
 <hr>
     [ <%= @building.number + " " + @building.street_address %> ]
 <hr>
 
 
+
+
+    APARTMENTS
+<br>
     <% @building.apartments.each do |a| %>
         [ <%= link_to a.number, apartment_path(a) %> ] 
     <% end %>
-
-
+<br>
 </center>
+
+
+<hr>
+    <%= link_to "WORK ORDER LIST", building_work_orders_path(@building) %>
+

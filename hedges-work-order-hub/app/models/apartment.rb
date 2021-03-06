@@ -1,5 +1,5 @@
 class Apartment < ApplicationRecord
-validates :number, presence: true
+validates :number, presence: true 
     belongs_to :building
 
     before_validation :short_addressify
@@ -17,7 +17,7 @@ validates :number, presence: true
         def short_addressify
             self.short_address = self.building.number + "-" + self.number
         end
-        
+         
         def long_addressify
             self.long_address = "#{self.building.number}-#{self.number} #{self.building.street_address}"
         end

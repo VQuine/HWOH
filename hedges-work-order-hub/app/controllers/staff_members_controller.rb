@@ -43,8 +43,18 @@ class StaffMembersController < ApplicationController
 
     def update
         @staff_member = StaffMember.find_by_id(params[:id])
-        @staff_member.update(staff_member_params)
-        redirect_to staff_member_path(@staff_member)
+
+        if params[:staff_member][:password] && params[:staff_member][:password] == params[:staff_member][:password_confirmation]
+            @staff_member.update(staff_member_params)
+            redirect_to staff_member_path(@staff_member)
+        elsif params[:staff_member][:password] && params[:staff_member][:password] != params[:staff_member][:password_confirmation]
+            flash[:error] = "New Password and Confirmation error!"
+            render :edit
+        else
+            @staff_member.update(staff_member_params)
+            render :edit
+        end
+
     end
 
     def destroy
